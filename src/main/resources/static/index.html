@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMAA – Barcarena</title>
+    <title>Integra PMAA – Barcarena/PA</title>
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
 
-<!-- TELA DE LOGIN -->
+<!-- ===== LOGIN ===== -->
 <div id="tela-login" class="login-wrapper">
     <div class="login-card">
         <div class="login-logo">
             <div class="logo-icon">🌿</div>
-            <h1>PMAA</h1>
+            <h1>Integra <span>PMAA</span></h1>
             <p>Programa Municipal de Aquisição de Alimentos</p>
-            <small>Prefeitura de Barcarena – PA</small>
+            <small>Prefeitura Municipal de Barcarena – PA</small>
         </div>
         <form id="form-login" onsubmit="fazerLogin(event)">
             <div class="campo">
-                <label>Login</label>
+                <label for="input-login">Login</label>
                 <input type="text" id="input-login" placeholder="Seu login" required autocomplete="username">
             </div>
             <div class="campo">
-                <label>Senha</label>
+                <label for="input-senha">Senha</label>
                 <input type="password" id="input-senha" placeholder="Sua senha" required autocomplete="current-password">
             </div>
             <div id="login-erro" class="erro-msg" style="display:none"></div>
@@ -32,29 +32,49 @@
     </div>
 </div>
 
-<!-- APP (após login) -->
+<!-- ===== APLICAÇÃO ===== -->
 <div id="app" style="display:none">
     <aside class="sidebar">
         <div class="sidebar-logo">
-            <span>🌿</span>
-            <span>PMAA</span>
+            <span class="marca-icone">🌿</span>
+            <span class="marca-texto">Integra <strong>PMAA</strong></span>
         </div>
         <nav id="nav-menu">
-            <a href="#" class="nav-item" data-pagina="dashboard" onclick="navegar('dashboard');return false;">📊 Dashboard</a>
-            <a href="#" class="nav-item" data-pagina="agricultores" onclick="navegar('agricultores');return false;">👨‍🌾 Agricultores</a>
-            <a href="#" class="nav-item" data-pagina="produtos" onclick="navegar('produtos');return false;">🥦 Produtos</a>
-            <a href="#" class="nav-item" data-pagina="beneficiarios" onclick="navegar('beneficiarios');return false;">🏛️ Beneficiários</a>
-            <a href="#" class="nav-item" data-pagina="entregas-agricultor" onclick="navegar('entregas-agricultor');return false;">📦 Entregas Agricultores</a>
-            <a href="#" class="nav-item" data-pagina="entregas-cesta" onclick="navegar('entregas-cesta');return false;">🧺 Entregas Cestas</a>
+            <a href="#" class="nav-item" data-pagina="dashboard" onclick="navegar('dashboard');return false;">
+                <span class="ico">📊</span><span class="rot">Início</span></a>
+
+            <div class="nav-divider">Cadastros</div>
+            <a href="#" class="nav-item" data-pagina="agricultores" onclick="navegar('agricultores');return false;">
+                <span class="ico">👨‍🌾</span><span class="rot">Agricultores</span></a>
+            <a href="#" class="nav-item" data-pagina="produtos" onclick="navegar('produtos');return false;">
+                <span class="ico">🥦</span><span class="rot">Produtos</span></a>
+            <a href="#" class="nav-item" data-pagina="beneficiarios" onclick="navegar('beneficiarios');return false;">
+                <span class="ico">🏛️</span><span class="rot">Beneficiários</span></a>
+
+            <div class="nav-divider">Movimentação</div>
+            <a href="#" class="nav-item" data-pagina="entregas-agricultor" onclick="navegar('entregas-agricultor');return false;">
+                <span class="ico">📦</span><span class="rot">Recebimentos</span></a>
+            <a href="#" class="nav-item" data-pagina="entregas-cesta" onclick="navegar('entregas-cesta');return false;">
+                <span class="ico">🧺</span><span class="rot">Entrega de cestas</span></a>
+            <a href="#" class="nav-item" data-pagina="saldos" onclick="navegar('saldos');return false;">
+                <span class="ico">🧮</span><span class="rot">Saldo mensal</span></a>
+            <a href="#" class="nav-item" data-pagina="relatorios" onclick="navegar('relatorios');return false;">
+                <span class="ico">📄</span><span class="rot">Relatórios</span></a>
+
             <div id="nav-admin" style="display:none">
                 <div class="nav-divider">Administração</div>
-                <a href="#" class="nav-item" data-pagina="pagamentos" onclick="navegar('pagamentos');return false;">💰 Pagamentos</a>
-                <a href="#" class="nav-item" data-pagina="funcionarios" onclick="navegar('funcionarios');return false;">👥 Funcionários</a>
+                <a href="#" class="nav-item" data-pagina="pagamentos" onclick="navegar('pagamentos');return false;">
+                    <span class="ico">💰</span><span class="rot">Pagamentos</span></a>
+                <a href="#" class="nav-item" data-pagina="funcionarios" onclick="navegar('funcionarios');return false;">
+                    <span class="ico">👥</span><span class="rot">Funcionários</span></a>
             </div>
         </nav>
         <div class="sidebar-footer">
             <div id="sidebar-usuario"></div>
-            <button onclick="sair()" class="btn-sair">Sair</button>
+            <div class="sidebar-acoes">
+                <button onclick="abrirTrocaSenha()" class="btn-rodape" title="Trocar minha senha">🔑 Senha</button>
+                <button onclick="sair()" class="btn-rodape" title="Sair do sistema">⏻ Sair</button>
+            </div>
         </div>
     </aside>
 
@@ -71,6 +91,8 @@
 <script src="/js/beneficiarios.js"></script>
 <script src="/js/entregas-agricultor.js"></script>
 <script src="/js/entregas-cesta.js"></script>
+<script src="/js/saldos.js"></script>
+<script src="/js/relatorios.js"></script>
 <script src="/js/pagamentos.js"></script>
 <script src="/js/funcionarios.js"></script>
 </body>

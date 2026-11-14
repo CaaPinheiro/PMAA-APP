@@ -1,0 +1,17 @@
+# Finais de linha. Os arquivos .bat e .cmd PRECISAM de CRLF: o interpretador
+# do Windows se perde com LF em linhas longas e com acentuacao.
+* text=auto
+
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+mvnw   text eol=lf
+*.sh   text eol=lf
+
+*.ico  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.pdf  binary
+*.docx binary
+*.xlsx binary
+*.xlsb binary

@@ -12,13 +12,18 @@
     </parent>
 
     <groupId>com.barcarena</groupId>
-    <artifactId>pmaa</artifactId>
+    <artifactId>integra-pmaa</artifactId>
     <version>1.0.0</version>
-    <name>PMAA - Programa Municipal de Aquisicao de Alimentos</name>
-    <description>Sistema de gestao do PMAA de Barcarena - PA</description>
+    <name>Integra PMAA</name>
+    <description>Software de gestao do Programa Municipal de Aquisicao de Alimentos de Barcarena-PA</description>
 
     <properties>
         <java.version>17</java.version>
+        <!--
+            O Spring Boot 3.2.5 gerencia o Lombok 1.18.30, que nao funciona
+            em JDK 23 ou superior. Esta versao cobre do JDK 17 ao 24.
+        -->
+        <lombok.version>1.18.36</lombok.version>
     </properties>
 
     <dependencies>
@@ -39,8 +44,8 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -73,7 +78,27 @@
     </dependencies>
 
     <build>
+        <finalName>integra-pmaa-1.0.0</finalName>
         <plugins>
+            <!--
+                A partir do JDK 23 o javac deixou de procurar processadores de
+                anotacao no classpath automaticamente. Sem esta declaracao
+                explicita o Lombok simplesmente nao roda, e todos os getters,
+                setters e construtores que ele gera deixam de existir.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

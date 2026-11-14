@@ -1,34 +1,42 @@
 # Build
 target/
-*.class
 *.jar
 *.war
-!.mvn/wrapper/maven-wrapper.jar
 
-# Variaveis de ambiente / segredos
-.env
-*.env
-application-local.properties
-application-prod.properties
+# Banco de dados H2 (dados locais - nao versionar)
+data/
+*.mv.db
+*.trace.db
 
-# IDE
+# Empacotamento desktop
+dist/
+instalador/
+
+# IntelliJ IDEA
 .idea/
 *.iml
 *.iws
 *.ipr
-.vscode/
-.settings/
-.project
+out/
+
+# Eclipse / VS Code
 .classpath
+.project
+.settings/
+.vscode/
 
 # Sistema operacional
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Logs
 *.log
 logs/
 
-# Uploads e dados locais
-uploads/
-data/
+# JDK portatil, se voce colocar um nesta pasta (centenas de MB - nunca versionar)
+jdk17/
+jre/
+
+# Excecao: o wrapper do Maven precisa ir junto, apesar da regra *.jar acima
+!.mvn/wrapper/maven-wrapper.jar
