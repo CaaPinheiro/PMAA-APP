@@ -26,7 +26,15 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/favicon.ico").permitAll()
+                .requestMatchers("/",
+                        "/index.html",
+                        "/css/**",
+                        "/js/**",
+                        "/favicon.ico",
+                        "/swagger-ui/**",
+                        "/v3/api-docs/**",
+                        "/swagger-ui.html")
+                    .permitAll()
                 .requestMatchers("/api/auth/login").permitAll()
                 // O console do H2 NAO e liberado: ele da acesso total ao banco
                 // (CPFs, hashes de senha, pagamentos) sem pedir login do sistema.
