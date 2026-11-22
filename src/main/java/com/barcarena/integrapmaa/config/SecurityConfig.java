@@ -26,6 +26,10 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
+                // Navegacao e arquivos da SPA nova (History API).
+                // O fallback so existe em /novo/** durante a transicao.
+                .requestMatchers("/novo", "/novo/**").permitAll()
+                // Frontend legado continua servido em / ate o corte.
                 .requestMatchers("/",
                         "/index.html",
                         "/css/**",
@@ -33,7 +37,8 @@ public class SecurityConfig {
                         "/favicon.ico",
                         "/swagger-ui/**",
                         "/v3/api-docs/**",
-                        "/swagger-ui.html")
+                        "/swagger-ui.html",
+                        "/error")
                     .permitAll()
                 .requestMatchers("/api/auth/login").permitAll()
                 // O console do H2 NAO e liberado: ele da acesso total ao banco

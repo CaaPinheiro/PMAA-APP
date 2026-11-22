@@ -1,0 +1,54 @@
+/*
+ * Design tokens do Integra PMAA.
+ * Valores confirmados em integra-pmaa/src/styles/tokens.scss e documentados
+ * em docs/design-system.md. Nao inventar tokens: valores sem confirmacao
+ * permanecem pendentes na Fase 2.
+ */
+:root {
+  --color-primary: #328140;
+  --color-primary-dark: #173a1e;
+  --color-primary-light: #e2f4e5;
+
+  --color-text-primary: #190933;
+  --color-text-secondary: #64748b;
+  --color-text-inverse: #ffffff;
+
+  --color-background: #f5f6fa;
+  --color-surface: #ffffff;
+  --color-field-inactive: #f1f5f9;
+  --color-border: #dedede;
+
+  --color-error: #ff383c;
+  --color-error-light: #ffd6d7;
+  --color-success: #34c759;
+
+  --font-family-base: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  --font-size-page-title: 32px;
+  --font-size-section-title: 20px;
+  --font-size-content: 13px;
+  --font-size-label: 14px;
+  --font-size-button: 14px;
+
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 64px;
+  --border-width: 1px;
+  --border-radius: 6px;
+  --shadow-card: 0 4px 24px rgb(0 0 0 / 4%);
+  --shadow-dialog: 0 4px 24px rgb(0 0 0 / 4%);
+}

@@ -1,0 +1,39 @@
+/*
+ * Regras de impressão.
+ *
+ * A versão impressa deve conter apenas o conteúdo relevante: navegação,
+ * filtros, ações e qualquer elemento marcado com data-print-hidden são
+ * ocultados.
+ */
+@media print {
+  .sidebar,
+  .app-shell__topbar,
+  .app-shell__backdrop,
+  .skip-link,
+  [data-print-hidden] {
+    display: none !important;
+  }
+
+  .app-shell {
+    display: block;
+    min-block-size: 0;
+  }
+
+  .app-shell__main {
+    padding: 0 !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .card {
+    border-color: var(--color-border);
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  a[href]::after {
+    content: '';
+  }
+}

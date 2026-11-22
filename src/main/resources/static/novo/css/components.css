@@ -1,0 +1,282 @@
+/*
+ * Componentes base do Design System.
+ * Alturas, densidade de tabela e dimensões de diálogo ainda não têm token
+ * confirmado (ver docs/design-system.md §10); os valores abaixo são os
+ * mínimos coerentes já usados na Fase 1 e serão refinados na Fase 3.
+ */
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  min-block-size: 40px;
+  padding-inline: var(--spacing-4);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, opacity 120ms ease;
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.btn--primary:not(:disabled):hover {
+  background-color: #2a6d36;
+}
+
+.btn--secondary {
+  border-color: var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.btn--secondary:not(:disabled):hover {
+  background-color: var(--color-background);
+}
+
+.btn--ghost {
+  color: var(--color-primary);
+}
+
+.btn--ghost:not(:disabled):hover {
+  background-color: var(--color-primary-light);
+}
+
+.btn--danger {
+  background-color: var(--color-error);
+  color: var(--color-text-inverse);
+}
+
+.btn--danger:not(:disabled):hover {
+  filter: brightness(0.94);
+}
+
+.btn--sm {
+  min-block-size: 32px;
+  padding-inline: var(--spacing-3);
+  font-size: 12px;
+}
+
+.btn--block {
+  inline-size: 100%;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: var(--border-radius);
+  color: var(--color-text-secondary);
+}
+
+.icon-btn:hover {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+/* ---------- Campos ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  min-inline-size: 0;
+}
+
+.field__label {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.field__control,
+.field input,
+.field select,
+.field textarea {
+  inline-size: 100%;
+  min-block-size: 44px;
+  padding-inline: var(--spacing-3);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-content);
+}
+
+.field textarea {
+  padding-block: var(--spacing-2);
+  min-block-size: 96px;
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(50 129 64 / 12%);
+}
+
+.field input:disabled,
+.field select:disabled,
+.field textarea:disabled,
+.field--inactive input,
+.field--inactive select {
+  background-color: var(--color-field-inactive);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+}
+
+.field__hint {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
+.field__error {
+  color: var(--color-error);
+  font-size: 12px;
+}
+
+/* ---------- Superfícies ---------- */
+.card {
+  padding: var(--spacing-6);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.card__title {
+  margin-block-end: var(--spacing-4);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: 999px;
+  background-color: var(--color-background);
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.badge--success {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.badge--danger {
+  background-color: var(--color-error-light);
+  color: #a11212;
+}
+
+/* ---------- Tabelas ---------- */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table {
+  inline-size: 100%;
+  min-inline-size: 640px;
+  font-size: var(--font-size-content);
+}
+
+.table th {
+  padding: var(--spacing-3);
+  border-block-end: var(--border-width) solid var(--color-border);
+  background-color: var(--color-background);
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-align: start;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--spacing-3);
+  border-block-end: var(--border-width) solid var(--color-border);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+  border-block-end: 0;
+}
+
+.table .is-numeric {
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+
+.table .is-actions {
+  inline-size: 1%;
+  text-align: end;
+  white-space: nowrap;
+}
+
+/* ---------- Estados ---------- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-12) var(--spacing-6);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.empty-state__title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-semibold);
+}
+
+.empty-state__action {
+  margin-block-start: var(--spacing-2);
+}
+
+.alert {
+  padding: var(--spacing-3);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-content);
+}
+
+.alert--error {
+  background-color: var(--color-error-light);
+  color: #a11212;
+}
+
+.alert--success {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
